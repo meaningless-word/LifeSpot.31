@@ -1,13 +1,13 @@
 ﻿<div class="slider-bar">
     <div class="inside-slider-bar">
         <div style="position: absolute; left: 0; top: 0; bottom: 0;">
-            <button tabindex="0" type="button" aria-label="Previous slide" class="button" onclick="prevSlide(this);">&lt;</button>
+            <button tabindex="0" type="button" aria-label="Previous slide" class="button" onclick="nextSlide(-1);">&lt;</button>
         </div>
         <img src="../Static/IMG/london.jpg" class="slided-img" alt="London" />
         <img src="../Static/IMG/ny.jpg" class="slided-img hided" alt="New York" />
         <img src="../Static/IMG/spb.jpg" class="slided-img hided" alt="St. Petersburg" />
         <div style="position: absolute; right: 0; top: 0; bottom: 0;">
-            <button tabindex="0" type="button" aria-label="Previous slide" class="button">&gt;</button>
+            <button tabindex="0" type="button" aria-label="Previous slide" class="button" onclick="nextSlide(1);">&gt;</button>
         </div>
     </div>
 

@@ -31,6 +31,15 @@ const writeReview = review => {
         '</div>';
 }
 
-function prevSlide(sender) {
-    console.log(sender);
+function nextSlide(k) {
+    const probablyImg = document.getElementsByClassName("slided-img");
+    for (let i = 0; i < probablyImg.length; i++) {
+        if (!probablyImg[i].classList.contains("hided")) {
+            probablyImg[i].classList.add("hided");
+            probablyImg[(probablyImg.length + i + k) % probablyImg.length].classList.remove("hided");
+            break;
+        } 
+    }
 }
+
+setInterval(nextSlide, 3000, 1);
