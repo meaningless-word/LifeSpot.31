@@ -8,8 +8,4 @@
       <None Remove="Views\about.html~RF5da7529.TMP" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Static\IMG\" />
-    </ItemGroup>
-
 </Project>

@@ -93,3 +93,14 @@ input:focus {
     padding-top: 1%;
     border: groove 3px #0094ff;
 }
+
+.slided-img {
+    display: inline-block;
+    width: 500px;
+    height: 200px;
+    border: solid 1px #0094ff;
+}
+
+.hided {
+    display: none;
+}

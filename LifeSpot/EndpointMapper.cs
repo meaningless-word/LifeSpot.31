@@ -21,6 +21,7 @@ namespace LifeSpot
                 {
                     var cssPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "CSS", fileName);
                     var css = await File.ReadAllTextAsync(cssPath);
+                    context.Response.ContentType = "text/css";
                     await context.Response.WriteAsync(css);
                 });
             }
@@ -39,33 +40,35 @@ namespace LifeSpot
                 {
                     var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "JS", fileName);
                     var js = await File.ReadAllTextAsync(jsPath);
+                    context.Response.ContentType = "text/javascript";
                     await context.Response.WriteAsync(js);
                 });
             }
         }
 
-        /// <summary>
-        ///  Маппинг IMG
-        /// </summary>
-        public static void MapImg(this IEndpointRouteBuilder builder)
-        {
-            var imgsFiles = new[] { "london.jpg", "ny.jpg", "spb.jpg" };
+		/// <summary>
+		///  Маппинг IMG
+		/// </summary>
+		public static void MapImg(this IEndpointRouteBuilder builder)
+		{
+			var imgFiles = new[] { "london.jpg", "ny.jpg", "spb.jpg" };
 
-            foreach (var fileName in imgsFiles)
-            {
-                builder.MapGet($"/Static/IMG/{fileName}", async context =>
-                {
-                    var imgsPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "IMG", fileName);
-                    var imgs = await File.ReadAllBytesAsync(imgsPath);
-                    await context.Response.WriteAsync(imgs.ToString());
-                });
-            }
-        }
+			foreach (var fileName in imgFiles)
+			{
+				builder.MapGet($"/Static/IMG/{fileName}", async context =>
+				{
+					var imgPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "IMG", fileName);
+					var img = await File.ReadAllBytesAsync(imgPath);
+					context.Response.ContentType = "image/jpeg";
+					await context.Response.WriteAsync(img.ToString());
+				});
+			}
+		}
 
-        /// <summary>
-        ///  Маппинг Html-страниц
-        /// </summary>
-        public static void MapHtml(this IEndpointRouteBuilder builder)
+		/// <summary>
+		///  Маппинг Html-страниц
+		/// </summary>
+		public static void MapHtml(this IEndpointRouteBuilder builder)
         {
             // Загружаем отдельные элементы для вставки в шаблон: боковое меню и футер
             string footerHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "footer.html"));
