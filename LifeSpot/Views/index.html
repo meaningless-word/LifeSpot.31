@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LifeSpot</title>
+    <!--Подключение стилей по отностиельному пути из внешнего файла-->
+    <link href="../Static/CSS/index.css" rel="stylesheet" type="text/css">
+    <!-- Внешний скрипт с функциями -->
+    <script type="text/javascript" src="../Static/JS/index.js"></script>
+    <!--<script>
+       // alert("Приветствуем на LifeSpot! " + new Date().toLocaleString());
+        /*
+         * Работать должно следующим образом:
+         *   При открытии сайта спрашиваем возраст пользователя, он его вводит.
+         *   Сохраняем результат в переменную и выполняем проверку.
+         *   Если пользователь старше 18 лет — показываем ему приветствие и загружаем сайт.
+         *   Если младше — сообщаем, что наш сайт для лиц старше 18 лет, и перенаправляем на google.com.
+         */
+        // Запросим возраст пользователя и сохраним в переменную
+        let age = prompt("Пожалуйста, введите ваш возраст");
+
+        if (age >= 18) {
+            // Те, кто старше 18, увидят приветствие и будут направлены на сайт
+            alert("Приветствуем на LifeSpot! " + new Date().toLocaleString());
+        }
+        else {
+            // Если введенное число < 18, либо если введено не число -
+            // пользователь будет перенаправлен
+            alert("Наши трансляции не предназначены для лиц моложе 18 лет. Вы будете перенаправлены");
+            window.location.href = "http://www.google.com"
+        }
+    </script>-->
+    <!-- Внутренний скрипт с вызовами функций -->
+    <script>
+        // всплывающее окно, показываемое через минуту после входа на сайт
+        setTimeout(() => alert("Нравится LifeSpot? " + '\n' + "Подпишитесь на наш Instagram @lifespot999!"), 30000);
+
+        // Вызов по имени функции
+        //handleSessionFD();
+        // Вызов по имени переменной
+        //sessionHandler();
+
+
+        // Создадим и обработаем сессию функцией, возвращающей объект
+        //let session = handleSessionReturner();
+        // Логируем в консоль, передав функции полученный объект.
+        //sessionPrinter(session);
+
+
+        // Отработка функций, демонстрирующих эффект замыкания
+        // Проверка на возраст
+        //checkAgeClosure();
+        // сохранение сессии
+        handleSessionClosure();
+        // вывод данных сессии в консоль
+        sessionLog();
+
+        // объявление функции-переменной, которая послужит аргументом для передачи в другую функцию
+        const inputParseFunction = function () {
+            return document.getElementsByTagName('input')[0].value.toLowerCase();
+        }
+    </script>
+</head>
+
+<!--Хедер страницы находится над тегом body-->
+<header id="header-index">
+    <!--Заголовок страницы-->
+    <h1>LifeSpot - прямые трансляции с улиц</h1>
+    <!--Параграф-->
+    <p>Покажем, что происходит прямо сейчас</p>
+
+    <!--<input type="text" oninput="filterContent()/* Вызов функции */" size="50%">-->
+    <!--<input type="text" oninput="contentFilter() /* Вызов по имени переменной */" size="50%">-->
+    <!--Перепишите функцию, отвечающую за фильтрацию данных для пользователя так, чтобы она принимала введённые пользователем данные в виде аргумента.-->
+    <!--<input type="text" oninput="filterContent(document.getElementsByTagName('input')[0].value.toLowerCase() /* Аргумент - значение, введённое пользователем */)" size=50%>-->
+    <!--В событии объявляется функция, которая передаётся аргументом в другую-->
+    <!--<input type="text" oninput="
+        // Функция объявлена через declaration
+       const inputParseFunction = function(){
+           return document.getElementsByTagName('input')[0].value.toLowerCase();
+       }
+       // Вызов (функция в аргумент передаётся без круглых скобок)
+       filterContentFCS( inputParseFunction )
+       " size=50%>-->
+    <!--переносим объявление функции-переменной inputParseFunction из атрибута oninput во внутренний скрипт-->
+    <input type="text" oninput="filterContentClosure() /* захват необходимой функции из внешней области видимости */" size="50%">
+</header>
+
+<!--Сайд-бар страницы (пока все ссылки ведут на главную)-->
+<!--<aside id="sidebar">
+    <div class="navbar">
+        <a href="/"><p>Все трансляции</p></a>
+        <a href="/"><p>О проекте</p></a>
+    </div>
+</aside>-->
+<!--теперь такой-->
+<!--SIDEBAR-->
+
+<body>
+    <div class="bordered">
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/srlpC5tmhYs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>Нью-Йорк, Брайант Парк</h3>
+        </div>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/wCcMcaiRbhM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>Санкт-Петербург, Невский Проспект</h3>
+        </div>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/muVgPUnU7qA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>Лондон, автобусный маршрут</h3>
+        </div>
+    </div>
+</body>
+
+
+<!--Футер страницы находится под основной частью (body)-->
+<footer>
+    <p>LifeSpot - видео трансляции</p>
+    <p>Связь с разработчиком: evmorgunov@yahoo.com</p>
+</footer>
+</html>
