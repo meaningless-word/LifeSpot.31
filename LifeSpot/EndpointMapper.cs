@@ -47,25 +47,6 @@ namespace LifeSpot
         }
 
 		/// <summary>
-		///  Маппинг IMG
-		/// </summary>
-		public static void MapImg(this IEndpointRouteBuilder builder)
-		{
-			var imgFiles = new[] { "london.jpg", "ny.jpg", "spb.jpg" };
-
-			foreach (var fileName in imgFiles)
-			{
-				builder.MapGet($"/Static/IMG/{fileName}", async context =>
-				{
-					var imgPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "IMG", fileName);
-					var img = await File.ReadAllTextAsync(imgPath);
-					context.Response.ContentType = "image/jpeg";
-					await context.Response.WriteAsync(img);
-				});
-			}
-		}
-
-		/// <summary>
 		///  Маппинг Html-страниц
 		/// </summary>
 		public static void MapHtml(this IEndpointRouteBuilder builder)

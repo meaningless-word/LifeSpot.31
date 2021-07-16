@@ -22,13 +22,16 @@ namespace LifeSpot
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
 
             app.UseRouting();
+
 
             app.UseEndpoints(endpoints =>
             {
                 // Маппинг статических файлов
-                endpoints.MapImg();
                 endpoints.MapCss();
                 endpoints.MapJs();
                 endpoints.MapHtml();
