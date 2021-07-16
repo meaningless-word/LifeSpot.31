@@ -24,9 +24,14 @@ namespace LifeSpot
             }
             app.UseHttpsRedirection();
 
-            app.UseStaticFiles();
+			app.UseStaticFiles(new StaticFileOptions
+			{
+				FileProvider = new PhysicalFileProvider(
+		Path.Combine(env.ContentRootPath, "images")), // указываем физический путь до папки с файлами
+				RequestPath = "/images" // запросы по этому url будут будут соотносится с файлами из указанной директории
+			});
 
-            app.UseRouting();
+			app.UseRouting();
 
 
             app.UseEndpoints(endpoints =>
